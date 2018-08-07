@@ -1,82 +1,49 @@
-/*var budgetController = (function() {
+//BUDGET CONTROLLER
+var budgetController = (function() {
 
-	var x = 23;
-
-	var add = function(a) {
-		return x + a;
-	}
-
-	return {
-		publicTest: function(b) {
-			return add(b);
-		}
-	}
+	//code
 
 })();
 
-
+//UI CONTROLLER
 var UIController = (function() {
 
 	//some code
 
 })();
 
-
+// GLOBAL APP CONTROLLER
 var controller = (function(budgetCtrl, UICtrl) {
 
-	var z = budgetCtrl.publicTest(5);
+	var ctrlAddItem = function() {
 
-	return {
-		anotherPublic: function() {
-			console.log(z);
-		}
+		// 1. Get the field input data
+
+		// 2. Add the item to the budget controller
+
+		// 3. Add the item to the UI
+
+		// 4. Calculate the budget
+
+		// 5. Display the budget on the UI
+
+		console.log('hey');
 	}
 
-})(budgetController, UIController);*/
+	document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
 
+		
 
-
-var model = (function() {
-
-	var x = 235;
-
-
-	var add = function(a) {
-		return x + a;
-	}
-
-	return {
-		theObj: function(b) {
-			return add(b);
-		}
-	}
-
-	
-
-})();
-
-
-var view = (function() {
-
-	//code
-
-})();
-
-
-var controller = (function(mod) {
-
-	z = mod.theObj(5);
-
-	return {
-		otherObj: function() {
-
-			console.log(z);
+	document.addEventListener('keypress', function(event) {
+		//event.which is for older browsers
+		if (event.keyCode === 13 || event.which === 13) {
+			
+			ctrlAddItem();
 
 		}
+	});
 
-	}
-	
-	
-	
+})(budgetController, UIController);
 
-})(model, view);
+
+
