@@ -131,6 +131,8 @@ var UIController = (function() {
 
 			});
 
+			fieldsArr[0].focus(); // set focus to first input after input fields are empty
+
 		},
 
 
