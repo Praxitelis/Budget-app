@@ -186,6 +186,15 @@ var UIController = (function() {
 
 		},
 
+		deleteListItem: function(selectorID) {     // selectorID is the itemID
+			var el = document.getElementById(selectorID);
+			el.parentNode.removeChild(el);
+			// we do this because we need to go the the parent element in order to delete
+			// the child. This is how javascript works
+			// For more on Dom manipulation check out blog.garstasio.com/you-dont-need-jquery/dom-manipulation/
+
+		},
+
 
 		clearFields: function() {
 
@@ -314,9 +323,9 @@ var controller = (function(budgetCtrl, UICtrl) {
 			// 1. Delete the item from the data structure
 			budgetCtrl.deleteItem(type, ID);
 			// 2. Delete the item from the UI
-
+			UICtrl.deleteListItem(itemID);
 			// 3. Update and show the new budget
-
+			updateBudget();
 		}
 
 
