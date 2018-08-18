@@ -70,6 +70,30 @@ var budgetController = (function() {
 			return newItem;
 		},
 
+
+		deleteItem: function(type, id) {
+			var ids, index;
+
+			// id = 3
+			// the following would work if ids were all in order which is not the case
+			// data.allItems[type][id];
+			// like we saw in the addItem expample  ids = [1 2 4 6 8]
+			// we will use map which is similar to foreach  but returns a brand new array
+			ids = data.allItems[type].map(function(current) {
+				return current.id;
+			});
+
+			index = ids.indexOf(id);
+
+			if (index !== -1) {
+				data.allItems[type].splice(index, 1); // splice will remove from index, 1 item
+			}
+
+
+
+		},
+
+
 		calculateBudget: function() {
 
 			// Calculate total income and expenses
@@ -285,10 +309,10 @@ var controller = (function(budgetCtrl, UICtrl) {
 
 			splitID = itemID.split('-');
 			type = splitID[0];
-			ID = splitID[1];
+			ID = parseInt(splitID[1]); //converted the string to a number 
 
 			// 1. Delete the item from the data structure
-
+			budgetCtrl.deleteItem(type, ID);
 			// 2. Delete the item from the UI
 
 			// 3. Update and show the new budget
